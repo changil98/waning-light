@@ -3,8 +3,7 @@
 손전등 하나에 의지해 추적자의 시야와 소리를 피하며 자원을 모으고 탈출하는 2D 탑다운 스텔스 게임입니다.
 매 플레이마다 절차적으로 생성되는 맵에서 진행되며, Unity 6 (URP 2D)로 개발했습니다.
 
-![스크린샷 자리](docs/screenshot-placeholder.png)
-> (스크린샷 / 플레이 GIF 추가 예정)
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/5fa83064-b041-4611-b1ce-db59c48ba4f7" />
 
 **▶ 플레이 데모:** [play.unity.com에서 바로 플레이하기](https://play.unity.com/ko/games/e399ca8a-5f91-454e-af63-653552e3a7a4/waning-light)
 
