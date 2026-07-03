@@ -21,21 +21,15 @@
 ## 폴더 구조 결정
 
 ```
-Scripts/Core/       — EventBus, GameManager (전역 시스템)
+Scripts/Core/       — EventBus, GameManager, AudioManager (전역 시스템)
 Scripts/Player/     — PlayerController, InventorySystem
-Scripts/Enemy/      — EnemyStateMachine, PerceptionSystem, States/
-Scripts/Level/      — ProceduralRoomGenerator, ResourceItem, ExitTrigger
-ScriptableObjects/  — EnemyData, RoomData (파라미터 외부화)
-Prefabs/            — Player, Enemy, Resource, Room 프리팹
+Scripts/Enemy/      — EnemyStateMachine, PerceptionSystem, EnemyData, EnemyContactCapture, States/
+Scripts/Level/      — ProceduralRoomGenerator, RoomData
+Scripts/GamePlay/   — ResourceItem, ExitTrigger
+Scripts/UI/         — UIManager, EndScreenUI, LobbyUi
+ScriptableObjects/  — EnemyData, RoomData 에셋 (파라미터 외부화)
+Prefabs/            — Player, Enemy, ResourceItem, ExitTrigger 프리팹
 ```
-
----
-
-## 미결 사항 (작업 중 확인 필요)
-
-- [ ] NavMesh 2D 베이크 방식: 런타임 생성(ProceduralRoomGenerator 완료 후) vs 에디터 사전 베이크
-- [ ] 손전등 구현: URP Light 2D Spot Light 컴포넌트 vs 커스텀 Raycast 마스크
-- [ ] 포착 판정 시간: GDD에 "일정 시간 이상 노출" — 구체적 수치 미정 (초안: 2초)
 
 ---
 
@@ -43,10 +37,3 @@ Prefabs/            — Player, Enemy, Resource, Room 프리팹
 
 **결정:** Zone 및 BehaviorMemory 시스템 제거.
 **이유:** 직접 테스트해본 결과 waypoint 순환 순찰이 더 자연스러운 게임플레이를 만들었고, Zone 기반 메모리는 체감 차이가 없었음. 단순한 FSM(Patrol → Chase → Search → Patrol)으로 복귀.
-
----
-
-## 추가 메모
-
-- GDD v0.1 Draft 기준으로 작업. 확장 아이디어(멀티 추적자, 로그라이트 요소)는 Phase 5 이후 고려.
-- 포트폴리오 어필 핵심: FSM, EventBus, 절차적 생성 — 면접 단골 질문 대응 구조.
