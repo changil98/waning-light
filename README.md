@@ -3,12 +3,20 @@
 손전등 하나에 의지해 추적자의 시야와 소리를 피하며 자원을 모으고 탈출하는 2D 탑다운 스텔스 게임입니다.
 매 플레이마다 절차적으로 생성되는 맵에서 진행되며, Unity 6 (URP 2D)로 개발했습니다.
 
-> 개발명: LAST LIGHT
-
 ![스크린샷 자리](docs/screenshot-placeholder.png)
 > (스크린샷 / 플레이 GIF 추가 예정)
 
-**▶ 플레이 데모:** (WebGL 빌드 업로드 후 링크 추가 예정 — 예: itch.io)
+**▶ 플레이 데모:** [play.unity.com에서 바로 플레이하기](https://play.unity.com/ko/games/e399ca8a-5f91-454e-af63-653552e3a7a4/waning-light)
+
+---
+
+## 개발 방식 — 바이브 코딩
+
+Claude Code를 사용하여 개발했습니다.
+
+- **스펙 작성:** 핵심 루프(자원 3개 수집 → 스텔스 회피 → 탈출)와 Phase 1~5 구현 순서를 먼저 정리 → [`checklist.md`](./checklist.md)
+- **Phase 단위로 구현 요청:** Claude Code에 Phase 단위로 구현을 맡기고, 기술 선택과 이유는 진행하며 기록 → [`context-notes.md`](./context-notes.md)
+- **직접 검증:** 각 Phase 끝에 Play Mode로 직접 테스트, 필요하면 설계를 되돌림 (Zone/BehaviorMemory 시스템 도입 후 체감 차이 없어 제거한 사례)
 
 ---
 
