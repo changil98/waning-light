@@ -40,7 +40,6 @@ Claude Code를 사용하여 개발했습니다.
 | **절차적 레벨 생성** | BSP(Binary Space Partitioning) 기반으로 매 실행마다 다른 방 배치와 통로를 생성 | `Level/ProceduralRoomGenerator.cs` |
 | **인지(Perception) 시스템** | Raycast 기반 시야 Cone과 청각 반경으로 플레이어를 감지 | `Enemy/PerceptionSystem.cs` |
 | **데이터 기반 밸런싱** | AI/레벨 파라미터를 ScriptableObject로 외부화해 코드 수정 없이 튜닝 | `Enemy/EnemyData.cs`, `Level/RoomData.cs` |
-| **동적 카메라 추적** | 절차적으로 스폰되는 플레이어를 런타임에 Cinemachine Follow 타겟으로 지정, Confiner2D로 카메라 이동 범위 제한 | `Level/ProceduralRoomGenerator.cs` |
 
 ---
 
