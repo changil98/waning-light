@@ -37,3 +37,10 @@ Prefabs/            — Player, Enemy, ResourceItem, ExitTrigger 프리팹
 
 **결정:** Zone 및 BehaviorMemory 시스템 제거.
 **이유:** 직접 테스트해본 결과 waypoint 순환 순찰이 더 자연스러운 게임플레이를 만들었고, Zone 기반 메모리는 체감 차이가 없었음. 단순한 FSM(Patrol → Chase → Search → Patrol)으로 복귀.
+
+---
+
+## 2026-07-01 — 카메라 추적 방식
+
+**결정:** Cinemachine 사용, `CinemachineConfiner2D`로 카메라 이동 범위 제한.
+**이유:** 카메라가 지정된 범위 밖으로 나가는 현상을 막는 기능을 쉽게 구현할 수 있어서 Cinemachine을 채택.
