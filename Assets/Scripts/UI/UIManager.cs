@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI resourceText;
+    [SerializeField] private TextMeshProUGUI timerText;
     [SerializeField] private Image flashlightIcon;
     [SerializeField] private Sprite flashlightOnSprite;
     [SerializeField] private Sprite flashlightOffSprite;
@@ -13,6 +14,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Image loadingPanel;
     [SerializeField] private TextMeshProUGUI loadingText;
 
+    private float _startTime;
     private Coroutine _warningCoroutine;
 
     private void OnEnable()
@@ -37,7 +39,13 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
+        _startTime = Time.time;
         loadingPanel.color = new Color(0, 0, 0, 1);
+    }
+
+    private void Update()
+    {
+        timerText.text = GameManager.FormatTime(Time.time - _startTime);
     }
 
     private void OnLevelGenerated(LevelGeneratedEvent e)

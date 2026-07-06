@@ -1,10 +1,12 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class EndScreenUI : MonoBehaviour
 {
     [SerializeField] private GameObject winPanel;
     [SerializeField] private GameObject losePanel;
+    [SerializeField] private TextMeshProUGUI clearTimeText;
 
     private void OnEnable()
     {
@@ -24,7 +26,11 @@ public class EndScreenUI : MonoBehaviour
 
     private void OnOpenPanel(GameStateChangedEvent e)
     {
-        if (e.newState == GameState.Won) OpenPanel(winPanel);
+        if (e.newState == GameState.Won)
+        {
+            clearTimeText.text = GameManager.FormatTime(e.elapsedTime);
+            OpenPanel(winPanel);
+        }
         else if (e.newState == GameState.Lost) OpenPanel(losePanel);
     }
 

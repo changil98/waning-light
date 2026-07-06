@@ -44,3 +44,11 @@ Prefabs/            — Player, Enemy, ResourceItem, ExitTrigger 프리팹
 
 **결정:** Cinemachine 사용, `CinemachineConfiner2D`로 카메라 이동 범위 제한.
 **이유:** 카메라가 지정된 범위 밖으로 나가는 현상을 막는 기능을 쉽게 구현할 수 있어서 Cinemachine을 채택.
+
+## 2026-07-06 — 인게임 타이머 / 클리어 타임 추가
+
+**결정:** 별도의 전역 타이머 싱글톤이나 새 이벤트 타입을 만들지 않고, 기존 `GameStateChangedEvent`에 elapsedTime 필드만 추가.
+**이유:** 이미 EventBus 패턴을 쓰고 있고, 승리/패배 시 Time.timeScale=0으로 멈추는 기존 로직(EndScreenUI)을 그대로 활용하면 별도 pause 처리 없이 클리어 시점에 시간이 자연히 고정됨. GameManager, UIManager 각각 자신의 Start() 시점을 _startTime으로 기록해 Time.time과의 차이로 경과 시간을 구함 (Time.time은 앱 시작 이후 누적값이라 씬 로드 시각을 직접 빼야 함).
+
+**결정:** mm:ss 포맷 변환은 GameManager에 정적 헬퍼(FormatTime)로 하나만 두고 UIManager/EndScreenUI에서 재사용.
+**이유:** 기존에도 GameManager.RequiredResources, GameManager.GameSceneName처럼 다른 스크립트가 GameManager의 상수를 참조하는 패턴이 있어 일관성 유지.

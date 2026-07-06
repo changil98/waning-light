@@ -15,12 +15,13 @@ public struct PlayerCapturedEvent { }
 public struct FlashlightToggledEvent { public bool isOn; }
 public struct PlayerDetectedEvent { }
 public struct PlayerEscapedEvent { }
-public struct GameStateChangedEvent { public GameState newState; }
+public struct GameStateChangedEvent { public GameState newState; public float elapsedTime; }
 
 public class GameManager : MonoBehaviour
 {
     private int _collectedResources;
     private GameState _currentState;
+    private float _startTime;
 
     public const int RequiredResources = 3;
     public const string PlayerTag = "Player";
@@ -42,6 +43,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        _startTime = Time.time;
         _currentState = GameState.Playing;
         EventBus.Publish(new ResourceCollectedEvent { totalCollected = _collectedResources });
     }
@@ -68,6 +70,12 @@ public class GameManager : MonoBehaviour
     private void SetState(GameState newState)
     {
         _currentState = newState;
-        EventBus.Publish(new GameStateChangedEvent { newState = newState });
+        EventBus.Publish(new GameStateChangedEvent { newState = newState, elapsedTime = Time.time - _startTime });
+    }
+
+    public static string FormatTime(float seconds)
+    {
+        int totalSeconds = Mathf.FloorToInt(seconds);
+        return $"{totalSeconds / 60:00}:{totalSeconds % 60:00}";
     }
 }
